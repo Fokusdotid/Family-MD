@@ -16,8 +16,7 @@ if (nenen) m.reply(`sukses demote @${user.split('@')[0]}!`)
   );
   for (let user of users)
     if (user.endsWith("@s.whatsapp.net"))
-      let anu = await conn.groupParticipantsUpdate(m.chat, [user], "demote");
-      if (anu) m.reply(`sukses demote @${user.split('@')[0]}!`)
+      await conn.groupParticipantsUpdate(m.chat, [user], "demote");
 };
 
 handler.help = ['demote @user']
