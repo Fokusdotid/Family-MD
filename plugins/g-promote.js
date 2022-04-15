@@ -16,7 +16,7 @@ if (nenen) m.reply(`sukses promote @${user.split('@')[0]}!`);
   );
   for (let user of users)
     if (user.endsWith("@s.whatsapp.net"))
-      let anu = await conn.groupParticipantsUpdate(m.chat, [user], "promote");
+      const anu = await conn.groupParticipantsUpdate(m.chat, [user], "promote");
       if (anu) m.reply(`sukses promote @${user.split('@')[0]}!`)
 };
 
