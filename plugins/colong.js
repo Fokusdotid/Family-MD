@@ -6,7 +6,7 @@ let handler = async (m, { conn, isOwner, usedPrefix, command, text }) => {
     var ras = await q.download()
     var sel = await webp2png(ras)
   } finally {
-    if (sel) await conn.sendStimg(m.chat, sel, m, { packname: pclg, author: aclg })
+    if (sel) await conn.sendStimg(m.chat, sel, m, { packname: colong1, author: colong2 })
     else throw false //return conn.reply(m.chat, `Balas stikernya boss 🔥`, m) 
   }
 }
