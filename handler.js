@@ -545,12 +545,13 @@ module.exports = {
                             let text = util.format(e)
                             for (let key of Object.values(global.APIKeys))
                                 text = text.replace(new RegExp(key, 'g'), '#HIDDEN#')
+                            if (e.name)
                             for (let jid of global.owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != this.user.jid)) {
                                 let data = (await this.onWhatsApp(jid))[0] || {}
                                 if (data.exists)
                                     m.reply(`*Plugin:* ${m.plugin}\n*Sender:* @${m.sender.split`@`[0]}\n*Chat:* ${m.chat}\n*Chat Name:* ${await this.getName(m.chat)}\n*Command:* ${usedPrefix}${command} ${args.join(' ')}\n\n\`\`\`${text}\`\`\``.trim(), data.jid, { mentions: [m.sender] })
                             }
-                            m.reply(text, m.chat)
+                            m.reply(text)
                         }
                     } finally {
                         // m.reply(util.format(_user))
@@ -602,6 +603,7 @@ module.exports = {
                     }
                 }
             }
+
             try {
                 require('./lib/print')(m, this)
             } catch (e) {
@@ -767,18 +769,7 @@ function pickRandom(list) {
   return list[Math.floor(list.length * Math.random())]
 }
 
-global.tmbnld = [
-    'https://telegra.ph/file/27e90a619b30082694bde.jpg',
-    'https://telegra.ph/file/61f2d6d9694b49a2ce7aa.jpg'
-]
-
-global.tmbnlm = [
-    'https://telegra.ph/file/96bd6642bdf0c931d1146.jpg',
-    'https://telegra.ph/file/fe2985e1f8d777a5f6e2e.jpg',
-    'https://telegra.ph/file/42f43b3136cfcae01b519.jpg',
-    'https://telegra.ph/file/e93c7ecd8959a698d7d45.jpg',
-    'https://telegra.ph/file/aa032976a112101614930.jpg',
-]
+global.thumb = 'https://telegra.ph/file/61f2d6d9694b49a2ce7aa.jpg'
 
 global.flaaa = [
  'https://flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=water-logo&script=water-logo&fontsize=90&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextColor=%23000&shadowGlowColor=%23000&backgroundColor=%23000&text=',
