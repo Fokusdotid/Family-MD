@@ -18,7 +18,7 @@ Ketik ${usedPrefix}ao untuk bantuan
 Bonus: ${poin} XP
     `.trim()
     conn.asahotak[id] = [
-        await conn.sendButtonLoc(m.chat, caption, wm, fla + `asah otak`, 'Bantuan', usedPrefix + 'ao', m),
+        await conn.sendButtonLoc(m.chat, fla + 'asah otak', caption, wm, 'Bantuan', usedPrefix + 'ao', m),
         json, poin,
         setTimeout(async () => {
             if (conn.asahotak[id]) await conn.sendButton(m.chat, `Waktu habis!\nJawabannya adalah *${json.jawaban}*`, wm, 'Asah Otak', '.asahotak', conn.asahotak[id][0])
