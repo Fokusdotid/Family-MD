@@ -74,6 +74,10 @@ Setel awalan
 
 Digunakan untuk [heroku](https://heroku.com/) atau pindai melalui situs web
 
+### `--db <url mongodb kamu>`
+
+Buka file package.json dan isikan url mongodb kamu di bagian `mongo: --db url mongodb`!
+
 ### `--db <json-server-url>`
 
 menggunakan db eksternal alih-alih db lokal, **disarankan** menggunakan mongodb
