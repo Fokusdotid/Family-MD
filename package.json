@@ -11,6 +11,7 @@
     },
     "scripts": {
         "start": "node index.js",
+        "mongo": "node --db 'isi mongodb mu'",
         "test": "node test.js",
         "test2": "nodemon index.js"
     },
