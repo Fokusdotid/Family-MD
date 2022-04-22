@@ -8,7 +8,7 @@ handler.all = async function (m) {
 	} catch (e) {
 	} finally {
 		global.axios = require('axios')
-		global.request = require('require')
+		global.request = require('request')
 		global.users = global.db.data.users[m.sender]
 		global.chats = global.db.data.chats[m.chat]
 		global.ftroli = { key: { remoteJid: 'status@broadcast', participant: '0@s.whatsapp.net' }, message: { orderMessage: { itemCount: 9999999999999999999999999999999999999999999999999999999, status: 1, surface: 1, message: wm, orderTitle: wm, sellerJid: '0@s.whatsapp.net' } } }
