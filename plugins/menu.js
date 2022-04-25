@@ -6,7 +6,7 @@ let moment = require('moment-timezone')
 const defaultMenu = {
   before: `
 ┌─〔 %me 〕
-├ *${ucapan()} %name*
+├ *${global.ucapan} %name*
 │
 ├ Tersisa *%limit Limit*
 ├ Role *%role*
@@ -186,7 +186,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       }
     })
     if (teks == '404') {
-      let judul = `${ucapan()}, ${name}`.trim()
+      let judul = `${global.ucapan}, ${name}`.trim()
       const sections = [
       {
         title: 'List Menu ' + namabot,
