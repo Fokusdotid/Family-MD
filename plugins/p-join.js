@@ -1,6 +1,7 @@
 let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i
 
 let handler = async (m, { conn, args, isPrems, isOwner, usedPrefix }) => {
+    if (!args[0]) throw 'uhm.. linknya mana?'
     let [_, code] = args[0].match(linkRegex) || []
     if (!code) throw 'Link Salah'
     let user = global.db.data.users[m.sender]
