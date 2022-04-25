@@ -2,10 +2,6 @@ let fs = require('fs')
 global.owner = JSON.parse(fs.readFileSync('./src/owner.json')) // Put your number to /src/owner.json
 global.mods = JSON.parse(fs.readFileSync('./src/moderator.json')) // Want some help?
 
-global.kontak = [
-['6281320170984', '𝘼𝙜𝙪𝙯 𝙁𝙖𝙢𝙞𝙡𝙞𝙖', true],
-['6285157436653', '𝙴𝙽𝙹𝙴𝙻𝙰-𝙱𝙾𝚃', true]
-]
 global.APIs = { // API Prefix
   // name: 'https://website'
   nrtm: 'https://nurutomo.herokuapp.com',
@@ -29,7 +25,7 @@ global.APIKeys = { // APIKey Here
   'https://zahirr-web.herokuapp.com': 'zahirgans',
   'https://api.zeks.me': 'apikeylu',
   'https://pencarikode.xyz': 'apikeylu',
-  'https://hardianto.xyz': 'apikeylu',
+  'https://hardianto.xyz': 'hardianto',
   'https://leyscoders-api.herokuapp.com': 'apikeylu'
 }
 
@@ -38,11 +34,11 @@ global.wait = '_*𝐬𝐞𝐝𝐚𝐧𝐠 𝐝𝐢 𝐩𝐫𝐨𝐬𝐞𝐬 ...*
 global.eror = '_*мααƒ ѕєяνєя тι∂αк ѕтαвιℓ..*_'
 
 //========Url Template Buttons=========//
-global.dtu = '𝑭𝒐𝒍𝒍𝒐𝒘'
+global.dtu = 'ɪɴꜱᴛᴀɢʀᴀᴍ'
 global.urlnya = "https://www.instagram.com/aguzfamilia"
 
 //============= callButtons =============//
-global.dtc = '𝒄𝒂𝒍𝒍 𝒐𝒘𝒏𝒆𝒓'
+global.dtc = 'ᴄᴀʟʟ ᴏᴡɴᴇʀ'
 global.phn = '+62 813-2017-0984'
 
 //============= Games ================//
