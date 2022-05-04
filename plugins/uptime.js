@@ -10,9 +10,12 @@ handler.command = /^(uptime|runtime)$/i
 module.exports = handler
 
 function clockString(ms) {
-    let d = isNaN(ms) ? '--' : Math.floor(ms / 86400000)
-    let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
-    let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
-    let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
-    return [d + ' Hari', + h + ' Jam ', + m + ' Menit ', s + ' Detik'].map(v => v.toString().padStart(2, 0)).join(' ')
+    let days = Math.floor(ms / (24 * 60 * 60 * 1000));
+    let daysms = ms % (24 * 60 * 60 * 1000);
+    let hours = Math.floor((daysms) / (60 * 60 * 1000));
+    let hoursms = ms % (60 * 60 * 1000);
+    let minutes = Math.floor((hoursms) / (60 * 1000));
+    let minutesms = ms % (60 * 1000);
+    let sec = Math.floor((minutesms) / (1000));
+    return days + " Hari " + hours + " Jam " + minutes + " Menit " + sec + " Detik";
 }
