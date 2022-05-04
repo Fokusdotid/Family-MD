@@ -1,7 +1,7 @@
 let handler = async (m, { conn, usedPrefix, command }) => {
     let _uptime = process.uptime() * 1000
     let uptimex = clockString(_uptime)
-    conn.send3Button(m.chat, `Aktif selama: *${uptimex}*`.trim(), wm, 'bot stats', usedPrefix + 'stat', 'pinger', usedPrefix + 'ping', 'kembali ke menu', usedPrefix + 'menu', m)
+    conn.send3Button(m.chat, `Aktif selama:\n*${uptimex}*`.trim(), wm, 'bot stats', usedPrefix + 'stat', 'pinger', usedPrefix + 'ping', 'kembali ke menu', usedPrefix + 'menu', m)
 }
 handler.help = ['runtime']
 handler.tags = ['info']
