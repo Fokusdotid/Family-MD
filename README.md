@@ -149,7 +149,3 @@ conn.logger.level = 'debug'
 
 ###### Contributor
 [![Fokus ID](https://github.com/fokusdotid.png?size=100)](https://github.com/fokusdotid)
-[![Aniq](https://github.com/aniq12.png?size=100)](https://github.com/aniq12)
-[![Rasel Comel](https://github.com/raselcomel.png?size=100)](https://github.com/raselcomel)
-[![Amirul Dev](https://github.com/amiruldev20.png?size=100)](https://github.com/amiruldev20)
-[![Amelia Lisa](https://github.com/Ameliascrf.png?size=100)](https://github.com/Ameliascrf)
