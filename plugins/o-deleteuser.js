@@ -28,12 +28,12 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
 	} finally {
 		let groupMetadata = m.isGroup ? await conn.groupMetadata(m.chat) : {}
 		let participants = m.isGroup ? groupMetadata.participants : []
-		let users = m.isGroup ? participants.find(u => u.jid == user) : {}
+		let users = m.isGroup ? participants.find(u => u.id == user) : {}
 		let number = user.split('@')[0]
 		delete global.db.data.users[user]
 		let pp = await conn.profilePictureUrl(number + '@s.whatsapp.net', 'image').catch((_) => "https://telegra.ph/file/24fa902ead26340f3df2c.png")
 		let anu = `Berhasil menghapus @${number} dari *DATABASE*`
-		conn.sendBL(m.chat, anu, wm, pp, [[`Database`, `${usedPrefix}database`]], m, { mentions: [number + '@s.whatsapp.net'] })
+		conn.sendButton(m.chat, anu, wm, `Database`, `${usedPrefix}database`, m, { mentions: [number + '@s.whatsapp.net'] })
 	}
 }
 handler.help = ['deleteuser']
