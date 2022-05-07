@@ -459,8 +459,8 @@ module.exports = {
                     if (m.chat in global.db.data.chats || m.sender in global.db.data.users) {
                         let chat = global.db.data.chats[m.chat]
                         let user = global.db.data.users[m.sender]
-                        if (name != 'o-unbanchat.js' && chat && chat?.isBanned) return // Except this
-                        if (name != 'o-unbanuser.js' && user && user?.banned) return
+                        if (!['unbanchat.js', 'dompet.js', 'creator.js'].includes(name) && chat && chat?.isBanned && !isPrems) return // Kecuali ini, bisa digunakan
+                        if (!['unbanchat.js', 'dompet.js', 'creator.js'].includes(name) && user && user?.banned) return
                     }
                     if (plugin.rowner && plugin.owner && !(isROwner || isOwner)) { // Both Owner
                         fail('owner', m, this)
