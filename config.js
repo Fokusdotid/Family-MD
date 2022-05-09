@@ -14,7 +14,8 @@ global.APIs = { // API Prefix
   neoxr: 'https://neoxr-api.herokuapp.com',
   amel: 'https://melcanz.com',
   hardianto: 'https://hardianto.xyz',
-  lol: 'https://api.lolhuman.xyz'
+  lol: 'https://api.lolhuman.xyz',
+  adicug: 'https://api.adiofficial.xyz
 }
 global.APIKeys = { // APIKey Here
   // 'https://website': 'apikey'
@@ -26,7 +27,8 @@ global.APIKeys = { // APIKey Here
   'https://api.zeks.me': 'apikeylu',
   'https://pencarikode.xyz': 'apikeylu',
   'https://hardianto.xyz': 'hardianto',
-  'https://leyscoders-api.herokuapp.com': 'apikeylu'
+  'https://leyscoders-api.herokuapp.com': 'apikeylu',
+  'https://api.adiofficial.xyz': 'apikey lu'
 }
 
 //global.wm = '𝑴𝒚𝑩𝒐𝒕-𝑴𝒖𝒍𝒕𝒊 𝑫𝒆𝒗𝒊𝒄𝒆 𝑩𝒚 𝑭𝒐𝒌𝒖𝒔𝑰𝑫'
