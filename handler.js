@@ -132,7 +132,6 @@ module.exports = {
                     if (!isNumber(user.age)) user.age = -1
                     if (!isNumber(user.regTime)) user.regTime = -1
                     }
-                    if (!('pasangan' in user)) user.pasangan = ''
                     if (!('premium' in user)) user.premium = false
                     if (!isNumber(user.premiumTime)) user.premiumTime = 0
                     if (!user.role) user.role = ''
@@ -236,8 +235,6 @@ module.exports = {
                     label: '',
                     age: -1,
                     regTime: -1,
-                    regTime: -1,
-                    pasangan: '',
                     premium: false,
                     premiumTime: 0,
                     role: '',
@@ -692,7 +689,6 @@ module.exports = {
             //console.log('=============\n\ngroupsUpdate \n\n============\n\n' + await groupUpdate)
             if (!text) continue
             await this.sendButton(id, text, wm, 'Matikan Fitur', `.off detect`, global.ftroli, { contextInfo: { mentionedJid: this.parseMention(text) }, mentions: await this.parseMention(text) })
-            //await this.sendMessage(id, { text, mentions: this.parseMention(text) })
         }
     },
     async delete({ remoteJid, fromMe, id, participant }) {
