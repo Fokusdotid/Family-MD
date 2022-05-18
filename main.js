@@ -92,7 +92,6 @@ if (opts['big-qr'] || opts['server']) conn.ev.on('qr', qr => generate(qr, { smal
 if (opts['server']) require('./server')(global.conn, PORT)
 
 async function connectionUpdate(update) {
-  console.log(require('chalk').redBright('Mengaktifkan Bot, Harap tunggu sebentar...'))
   const { connection, lastDisconnect } = update
   if (connection == 'connecting') console.log(chalk.redBright('🕛 Mengaktifkan Bot, Harap tunggu sebentar...'))
   if (connection == 'open') {
