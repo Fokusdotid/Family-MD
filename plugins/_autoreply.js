@@ -9,8 +9,8 @@ handler.all = async function (m) {
     }
     let { isBanned } = db.data.chats[m.chat]
     let { banned } = db.data.users[m.sender]
-    let { group } = db.data.settings
-    let setting = db.data.settings
+    let { group } = db.data.settings[this.user.jid]
+    let setting = db.data.settings[this.user.jid]
     let user = global.db.data.users[m.sender]
     
     // salam

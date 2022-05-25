@@ -1,5 +1,5 @@
 let handler = async (m, { conn }) => {
-    let { anon, anticall, backup, jadibot, groupOnly, epe, tag, self } = global.db.data.settings
+    let { anon, anticall, backup, jadibot, groupOnly, epe, tag, self } = global.db.data.settings[conn.user.jid]
 
     const chats = Object.keys(await conn.chats)
     const groups = Object.keys(await conn.groupFetchAllParticipating())

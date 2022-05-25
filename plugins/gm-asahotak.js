@@ -1,29 +1,32 @@
+const fs = require('fs')
 const fetch = require('node-fetch')
-let timeout = 120000
-let poin = 500
+const timeout = 120000
+const poin = 500
 let handler = async (m, { conn, usedPrefix }) => {
     conn.asahotak = conn.asahotak ? conn.asahotak : {}
     let id = m.chat
     if (id in conn.asahotak) {
-        await conn.sendButton(m.chat, 'Masih ada soal belum terjawab di chat ini', wm, 'Bantuan', usedPrefix + 'ao', conn.asahotak[id][0])
+        conn.sendButton(m.chat, 'Masih ada soal belum terjawab di chat ini', wm, 'Bantuan', usedPrefix + 'ao', conn.asahotak[id][0])
         throw false
     }
-    let src = await (await fetch('https://raw.githubusercontent.com/BochilTeam/database/master/games/asahotak.json')).json()
-    let json = src[Math.floor(Math.random() * src.length)]
+    let res = JSON.parse(fs.readFileSync('./api/asahotak.json'))
+    let random = Math.floor(Math.random() * res.length)
+    let json = res[random]
     let caption = `
-${json.soal}
+    ${json.soal}
 
 Timeout *${(timeout / 1000).toFixed(2)} detik*
 Ketik ${usedPrefix}ao untuk bantuan
 Bonus: ${poin} XP
     `.trim()
     conn.asahotak[id] = [
-        await conn.sendButtonLoc(m.chat, fla + 'asah otak', caption, wm, 'Bantuan', usedPrefix + 'ao', m),
-        json, poin,
-        setTimeout(async () => {
-            if (conn.asahotak[id]) await conn.sendButton(m.chat, `Waktu habis!\nJawabannya adalah *${json.jawaban}*`, wm, 'Asah Otak', '.asahotak', conn.asahotak[id][0])
+    await conn.sendButtonLoc(m.chat, await (await fetch(fla + 'Asah Otak')).buffer(), caption, wm, 'Bantuan', usedPrefix + 'ao', m),
+    json,
+    poin,
+    setTimeout(() => {
+        if (conn.asahotak[id]) conn.sendButton(m.chat, `Waktu habis!\nJawabannya adalah *${json.jawaban}*`, wm, 'Asah Otak', usedPrefix + 'asahotak', conn.asahotak[id][0])
             delete conn.asahotak[id]
-        }, timeout)
+    }, timeout)
     ]
 }
 handler.help = ['asahotak']
