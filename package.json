@@ -1,6 +1,6 @@
 {
     "name": "Family",
-    "version": "2.2.5",
+    "version": "2.3.5",
     "description": "Simle Bot WhatsApp with Baileys Multi Device",
     "depecrated": false,
     "main": "index.js",

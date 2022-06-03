@@ -2,7 +2,6 @@ let { Presence } = require('@adiwajshing/baileys')
 let { performance } = require('perf_hooks')
 const simple = require('./lib/simple')
 const util = require('util')
-const moment = require('moment-timezone')
 
 const isNumber = x => typeof x === 'number' && !isNaN(x)
 const delay = ms => isNumber(ms) && new Promise(resolve => setTimeout(resolve, ms))
@@ -21,29 +20,19 @@ module.exports = {
 
         const _uptime = process.uptime() * 1000
         global.u = await conn.clockString(_uptime)
-        global.ucapan = ucapan()
-        global.settings = global.db.data.settings
         global.pickRandom = pickRandom
         global.doc = pickRandom(["application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "application/msword", "application/pdf"])
         global.img = pickRandom(global.waifu)
         global.fla = pickRandom(global.flaaa)
         global.namabot = conn.user.name
         global.packname = global.namabot
-        global.author = global.data.owner
+        global.author = global.dataw.owner
         //global.author = '𝑨𝒈𝒖𝒛 𝑭𝒂𝒎𝒊𝒍𝒊𝒂'
-        global.wm2 = global.data.namabot + ' ' + global.data.owner
+        //global.wm2 = global.data.namabot + ' ' + global.data.owner
         global.wm = namabot + ' ву ƒσкυѕ ι∂'
         global.colong1 = 'Ciss 📸'
         global.colong2 = 'ʙy ᴀɢᴜᴢ ꜰᴀᴍɪʟɪᴀ'
-        global.kontak2 = [
-        ['6281320170984', '𝘼𝙜𝙪𝙯 𝙁𝙖𝙢𝙞𝙡𝙞𝙖', 'ᴅᴇᴠᴇʟᴏᴩᴇʀ ʙᴏᴛ', 'FokusDotId13@gmail.com', true],
-        ['6283823916413', await this.getName('6283823916413@s.whatsapp.net'), 'ᴄꜱ ꜰᴀᴍɪʟy-ʙᴏᴛ', 'sa0066588@gmail.com', true],
-        ['6285157436653', '𝙴𝙽𝙹𝙴𝙻𝙰-𝙱𝙾𝚃', 'Bot WhatsApp', 'Nothing!', true],
-        ['6288276639962', await this.getName('6288276639962@s.whatsapp.net'), 'ᴄꜱ ꜰᴀᴍɪʟy-ʙᴏᴛ', 'khasanahmarifatul28@gmail.com', true],
-        ['6285669524800', await this.getName('6285669524800@s.whatsapp.net'), 'ᴄꜱ ꜰᴀᴍɪʟy-ʙᴏᴛ', 'rykkalieeofficiall@gmail.com', true],
-        ]
         global.bg = await (await fetch(img)).buffer()
-        global.time = require('moment-timezone').tz('Asia/Jakarta').format('HH:mm:ss')
 
         if (!m) return
         //console.log(JSON.stringify(m, null, 4))
@@ -739,23 +728,6 @@ fs.watchFile(file, () => {
     if (global.reloadHandler) console.log(global.reloadHandler())
 })
 
-function ucapan() {
-    const time = moment.tz('Asia/Jakarta').format('HH')
-    let res = "Selamat malam 🌙"
-    if (time >= 4) {
-        res = "Selamat pagi 🌄"
-    }
-    if (time > 10) {
-        res = "Selamat siang ☀️"
-    }
-    if (time >= 15) {
-        res = "Selamat sore 🌅"
-    }
-    if (time >= 18) {
-        res = "Selamat malam 🌙"
-    }
-    return res
-}
 function clockString(ms) {
     let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
     let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60

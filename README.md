@@ -16,6 +16,9 @@
 [![BOT DISCUSSION GROUP](https://img.shields.io/badge/WhatsApp%20Group-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/Fm6gRtvuCDN9abXVlfekAK) 
 **NO BOT**
 
+## Grup Botnya
+[![BOT DISCUSSION GROUP](https://img.shields.io/badge/WhatsApp%20Group-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/)
+
 ## UNTUK PENGGUNA WINDOWS/VPS/RDP
 
 * Unduh & Instal Git [`Klik Disini`](https://git-scm.com/downloads)
@@ -56,7 +59,12 @@ $ node .
 * https://github.com/mcollina/heroku-buildpack-imagemagick.git
 
 ---------
+## CARA SETTINGS
 
+Untuk menambahkan atau mengedit owner ada di `settings/owner.json`
+Cantumkan sumber sc wajib!!
+
+---------
 ## Arguments `node . [--options] [<session name>]` 
 
 ### `--session <nama file>`
