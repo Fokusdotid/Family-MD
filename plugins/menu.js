@@ -6,7 +6,7 @@ let moment = require('moment-timezone')
 const defaultMenu = {
   before: `
 ┌─〔 %me 〕
-├ *${global.ucapan} %name*
+├ *%ucapan %name*
 │
 ├ Tersisa *%limit Limit*
 ├ Role *%role*
@@ -261,6 +261,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     text = typeof conn.menu == 'string' ? conn.menu : typeof conn.menu == 'object' ? _text : ''
     let replace = {
       '%': '%',
+      ucapan: global.ucapan,
       p: _p, uptime, muptime,
       me: conn.user.name,
       npmname: package.name,
