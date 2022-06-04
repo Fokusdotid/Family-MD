@@ -23,7 +23,10 @@ try {
   low = require('./lib/lowdb')
 }
 const { Low, JSONFile } = low
-const mongoDB = require('./lib/mongoDB')
+const {
+	mongoDB,
+	MongoDBV2
+} = require('./lib/mongoDB')
 
 simple.protoType()
 
