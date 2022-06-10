@@ -23,7 +23,7 @@ handler.before = async function (m) {
                 while (levelling.canLevelUp(user.level, user.exp, global.multiplier)) user.level++
 
                 if (before !== user.level) {
-                        let rank = (await fetch(API('hardianto', '/api/levelup', {
+                        let rank = (await fetch(API('males', '/levelup', {
                                 profile: pp
                         }),
                         )).buffer()

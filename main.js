@@ -71,9 +71,9 @@ loadDatabase()
 // if (opts['cluster']) {
 //   require('./lib/cluster').Cluster()
 // }
-global.authFile = `${opts._[0] || 'session'}.data.json`
+const authFile = `${opts._[0] || 'session'}.data.json`
 global.isInit = !fs.existsSync(authFile)
-const { state, saveState } = useSingleFileAuthState(global.authFile)
+const { state, saveState } = useSingleFileAuthState(authFile)
 
 const connectionOptions = {
   printQRInTerminal: true,

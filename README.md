@@ -64,6 +64,8 @@ $ node .
 Untuk menambahkan atau mengedit owner ada di `settings/owner.json`
 Cantumkan sumber sc wajib!!
 
+Lebih baik baca `Q&A.txt` di folder main okey
+
 ---------
 ## Arguments `node . [--options] [<session name>]` 
 

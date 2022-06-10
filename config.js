@@ -32,7 +32,6 @@ global.APIKeys = { // APIKey Here
   'https://api.adiofficial.xyz': 'apikey lu'
 }
 
-//global.wm = '𝑴𝒚𝑩𝒐𝒕-𝑴𝒖𝒍𝒕𝒊 𝑫𝒆𝒗𝒊𝒄𝒆 𝑩𝒚 𝑭𝒐𝒌𝒖𝒔𝑰𝑫'
 global.wait = '_*𝐬𝐞𝐝𝐚𝐧𝐠 𝐝𝐢 𝐩𝐫𝐨𝐬𝐞𝐬 ...*_'
 global.eror = '_*мααƒ ѕєяνєя тι∂αк ѕтαвιℓ..*_'
 
@@ -52,13 +51,6 @@ global.dikit = "dikit lagi, semangat ya :')"
 global.multiplier = 100 // The higher, The harder levelup
 
 //=========== Requirements ==========//
-
-global.baileys = require('@adiwajshing/baileys')
-global.fs = require('fs')
-global.dataw = JSON.parse(fs.readFileSync('./data.json'))
-global.fetch = require('node-fetch')
-global.bochil = require('@bochilteam/scraper')
-
 global.rpg = {
   emoticon(string) {
     string = string.toLowerCase()
