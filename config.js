@@ -1,4 +1,10 @@
 let fs = require('fs')
+
+let flaaa = JSON.parse(fs.readFileSync('./api/fla.json'))
+let waifu = JSON.parse(fs.readFileSync('./api/waifu.json'))
+let data = JSON.parse(fs.readFileSync('./data.json'))
+
+
 global.owner = JSON.parse(fs.readFileSync('./settings/owner.json')) // Put your number to folder /src/owner.json
 global.mods = JSON.parse(fs.readFileSync('./settings/moderator.json')) // Want some help?
 
@@ -50,7 +56,16 @@ global.dikit = "dikit lagi, semangat ya :')"
 
 global.multiplier = 100 // The higher, The harder levelup
 
-//=========== Requirements ==========//
+// Sticker WM
+lobal.packname = data.namabot;
+global.author = data.owner;
+
+//=========== Requirements ==========//  
+        global.colong1 = 'Ciss 📸'
+        global.colong2 = 'ʙy ᴀɢᴜᴢ ꜰᴀᴍɪʟɪᴀ'
+global.img = pickRandom(waifu)
+global.fla = pickRandom(flaaa)
+
 global.rpg = {
   emoticon(string) {
     string = string.toLowerCase()

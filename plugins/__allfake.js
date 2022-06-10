@@ -2,10 +2,6 @@ let fs = require('fs')
 let fetch = require('node-fetch')
 const moment = require('moment-timezone')
 
-let flaaa = JSON.parse(fs.readFileSync('./api/fla.json'))
-let waifu = JSON.parse(fs.readFileSync('./api/waifu.json'))
-let data = JSON.parse(fs.readFileSync('./data.json'))
-
 let handler = m => m
 handler.all = async function (m) {
 	let pp = 'https://telegra.ph/file/2d06f0936842064f6b3bb.png'
@@ -14,12 +10,6 @@ handler.all = async function (m) {
 	} catch (e) {
 	} finally {
 		
-		// Sticker WM
-        global.packname = data.namabot;
-        global.author = data.owner;
-        
-        global.colong1 = 'Ciss 📸'
-        global.colong2 = 'ʙy ᴀɢᴜᴢ ꜰᴀᴍɪʟɪᴀ'
         global.bg = await (await fetch(img)).buffer()
 		global.doc = pickRandom(["application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "application/msword", "application/pdf"])
 		
@@ -28,10 +18,7 @@ handler.all = async function (m) {
 		
 		const _uptime = process.uptime() * 1000
         global.u = await conn.clockString(_uptime)
-		
-		global.img = pickRandom(waifu)
-		global.fla = pickRandom(flaaa)
-		
+        
 		// Ini untuk command crator/owner
 		global.kontak2 = [
          [owner[0], await this.getName(owner[0] + '@s.whatsapp.net'), 'ᴅᴇᴠᴇʟᴏᴩᴇʀ ʙᴏᴛ', 'mr.familia13@gmail.com', true],
