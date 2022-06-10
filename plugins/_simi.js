@@ -6,7 +6,7 @@ handler.before = async (m) => {
     if (chat.simi && !chat.isBanned && !m.fromMe) {
         if (/^.*false|disnable|(turn)?off|0/i.test(m.text)) return
         if (!m.text) return
-        let res = await fetch(global.API('https://api-sv2.simsimi.net', '/v2/', { text: encodeURIComponent(m.text), lc: "id", cf: false }, '')) ''))
+        let res = await fetch(global.API('https://api-sv2.simsimi.net', '/v2/', { text: encodeURIComponent(m.text), lc: "id", cf: false }, ''))
         if (!res.ok) throw 'maaf simi lagi sibuk'
         let json = await res.json()
         if (json.success == 'lu ngomong apa sih') await m.reply("gapaham cok :'v")
