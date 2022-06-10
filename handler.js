@@ -18,6 +18,9 @@ module.exports = {
         if (chatUpdate.messages.length > 1) console.log(chatUpdate.messages)
         let m = chatUpdate.messages[chatUpdate.messages.length - 1]
         if (!m) return
+        
+        global.namabot = await this.user.name
+        global.wm = namabot + ' ву ƒσкυѕ ι∂'
         //console.log(JSON.stringify(m, null, 4))
         try {
             m = simple.smsg(this, m) || m

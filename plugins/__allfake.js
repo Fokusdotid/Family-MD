@@ -14,13 +14,10 @@ handler.all = async function (m) {
 	} catch (e) {
 	} finally {
 		
-		global.namabot = await this.user.name
-		
 		// Sticker WM
         global.packname = data.namabot;
         global.author = data.owner;
         
-        global.wm = namabot + ' ву ƒσкυѕ ι∂'
         global.colong1 = 'Ciss 📸'
         global.colong2 = 'ʙy ᴀɢᴜᴢ ꜰᴀᴍɪʟɪᴀ'
         global.bg = await (await fetch(img)).buffer()
