@@ -112,3 +112,7 @@ fs.watchFile(file, () => {
   delete require.cache[file]
   require(file)
 })
+
+function pickRandom(list) {
+  return list[Math.floor(list.length * Math.random())]
+}
