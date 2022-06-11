@@ -668,7 +668,7 @@ module.exports = {
     },
     async delete({ remoteJid, fromMe, id, participant }) {
         if (fromMe) return
-        let chats = Object.entries(conn.chats).find(([user, data]) => data.messages && data.messages[id])
+        let chats = Object.entries(await this.chats).find(([user, data]) => data.messages && data.messages[id])
         if (!chats) return
         let msg = JSON.parse(chats[1].messages[id])
         let chat = global.db.data.chats[msg.key.remoteJid] || {}
