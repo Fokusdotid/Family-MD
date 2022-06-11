@@ -8,7 +8,7 @@ let handler = async (m, { conn }) => {
 		const botAdmin = data.participants.filter(v => v.id == conn.user.jid)[0].admin
 		const dbnya = db.data.chats[i]
 		const expired = `${dbnya ? conn.msToDate(dbnya.expired - new Date() * 1) : 'Tidak terdaftar di database!'}`
-		txt += `Nama: ${data.subject}\nOwner: ${data.owner !== undefined ? '@' + data.owner.split('@')[0] : 'Ndak Tau🗿'}\nID: ${data.id}\nDibuat: ${moment(data.creation * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}\nTotal Member: ${data.participants.length}\nExpired: ${expired}\nBot Admin: ${botAdmin ? 'Admin' : botAdmin === 'superadmin' ? 'Pembuat Grup!' : 'Bukan Admin'}\n\n   –——————————————————\n\n`
+		txt += `*Nama:* ${data.subject}\n*Owner:* ${data.owner !== undefined ? '@' + data.owner.split('@')[0] : 'Ndak Tau🗿'}\n*ID:* ${data.id}\n*Dibuat:* ${moment(data.creation * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}\n*Total Member:* ${data.participants.length}\n*Expired:* ${expired}\n*Bot Admin:* ${botAdmin ? 'Admin' : botAdmin === 'superadmin' ? 'Pembuat Grup!' : 'Bukan Admin'}\n\n   –——————————————————\n\n`
 	}
 	conn.reply(m.chat, txt, m, { mentions: await conn.parseMention(txt) })
 }
