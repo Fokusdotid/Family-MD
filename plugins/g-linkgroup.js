@@ -1,15 +1,19 @@
-let handler = async (m, { conn }) => {
-  try {
-    conn.reply(m.chat, `*Link Group:* ${await conn.getName(m.chat)}\n\nhttps://chat.whatsapp.com/` + await conn.groupInviteCode(m.chat) + `\n\n${conn.user.name}`, m)
-  } catch {
-    conn.reply(m.chat, `Jadikan @${conn.user.jid.split('@')[0]} sebagai admin untuk menggunakan perintah ini!`, m, { mentions: [conn.user.jid] })
-  }
+const { areJidsSameUser } = require('@adiwajshing/baileys')
+let handler = async (m, { conn, args }) => {
+    let group = m.chat
+    if (/^[0-9]{5,16}-?[0-9]+@g\.us$/.test(args[0])) group = args[0]
+    if (!/^[0-9]{5,16}-?[0-9]+@g\.us$/.test(group)) throw 'Hanya bisa dibuka di grup'
+    let groupMetadata = await conn.groupMetadata(group)
+    if (!groupMetadata) throw 'grup tidak diketahui!'
+    if (!('participants' in groupMetadata)) throw 'peserta grup tidak diketahui!'
+    let me = groupMetadata.participants.find(user => areJidsSameUser(user.id, conn.user.id))
+    if (!me) throw 'Aku tidak ada di grup itu :('
+    if (!me.admin) throw 'Aku bukan admin T_T'
+    let name = await conn.getName(group)
+    conn.sendButton(m.chat, '*Link Group:* ${name}\n\nhttps://chat.whatsapp.com/' + await conn.groupInviteCode(group), wm, 'menu', '.menu', m)
 }
 handler.help = ['linkgroup']
 handler.tags = ['group']
-handler.command = /^link(g(c)?ro?up)?$/i
-
-handler.group = true
-//handler.botAdmin = true
+handler.command = /^link(gro?up)?$/i
 
 module.exports = handler
