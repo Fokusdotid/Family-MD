@@ -10,7 +10,7 @@ let handler = async (m, { conn, args }) => {
     if (!me) throw 'Aku tidak ada di grup itu :('
     if (!me.admin) throw 'Aku bukan admin T_T'
     let name = await conn.getName(group)
-    conn.sendButton(m.chat, '*Link Group:* ${name}\n\nhttps://chat.whatsapp.com/' + await conn.groupInviteCode(group), wm, 'menu', '.menu', m)
+    conn.sendButton(m.chat, `*Link Group:* ${name}\n\nhttps://chat.whatsapp.com/` + await conn.groupInviteCode(group), wm, 'menu', '.menu', m)
 }
 handler.help = ['linkgroup']
 handler.tags = ['group']
