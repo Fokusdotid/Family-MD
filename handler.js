@@ -634,7 +634,7 @@ module.exports = {
             case 'demote':
                 if (!text) text = (chat.sDemote || this.sdemote || conn.sdemote || '@user ```is no longer Admin```')
                 text = text.replace('@user', '@' + participants[0].split('@')[0])
-                if (chat.detect) this.sendButton(id, text, wm, 'Matikan Fitur Ini', '.off detect', ftroli)
+                if (chat.detect) this.sendButtonDoc(id, text, wm, 'Matikan Fitur Ini', '.off detect', fkontak, { contextInfo: global.adReply.contextInfo })
                 break
         }
     },
@@ -659,7 +659,7 @@ module.exports = {
             if (groupUpdate.restrict == false) text = (chats.sRestrictOff || this.sRestrictOff || conn.sRestrictOff || '```Group has been only admin!')
             //console.log('=============\n\ngroupsUpdate \n\n============\n\n' + await groupUpdate)
             if (!text) continue
-            await this.sendButton(id, text, wm, 'Matikan Fitur', `.off detect`, global.ftroli, { contextInfo: { mentionedJid: this.parseMention(text) }, mentions: await this.parseMention(text) })
+            await this.sendButtonDoc(id, text, wm, 'Matikan Fitur', `.off detect`, global.fkontak, { contextInfo: global.adReply.contextInfo, mentions: await this.parseMention(text) })
         }
     },
     async delete({ remoteJid, fromMe, id, participant }) {
