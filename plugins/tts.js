@@ -5,6 +5,7 @@ let { spawn } = require('child_process')
 
 const defaultLang = 'id'
 let handler = async (m, { conn, args }) => {
+	if (!args) throw 'text nya mana?'
 
   let lang = args[0]
   let text = args.slice(1).join(' ')
