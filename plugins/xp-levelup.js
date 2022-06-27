@@ -19,11 +19,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     let usersLevel = sortedLevel.map(enumGetKey)
     let { min, xp, max } = levelling.xpRange(user.level, global.multiplier)
     if (!levelling.canLevelUp(user.level, user.exp, global.multiplier)) {
-      /*
-      https://melcanz.com/rank?rank=1&pp=https://i.ibb.co/G5mJZxs/rin.jpg&level=1&currentxp=69&needxp=100&name=Amel&discriminator=1234&apikey=FokusDotId
-      https://hardianto.xyz/api/rankcard?profile=https://i.ibb.co/1s8T3sY/48f7ce63c7aa.jpg&name=hardianto&bg=https://i.ibb.co/1dJT0FG/240-F-292007743-h413-LUf-Bpsy-Xi8uvu-BTo-QW0bw9b3x05-U.jpg&needxp=1000&curxp=500&level=20&logorank=https://i.ibb.co/Wn9cvnv/FABLED.png
-      */
-      let rank = (await fetch(API('apiku', '/rankcard', {
+      let rank = (await fetch(API('males', '/rankcard', {
         profile: _pp,
         name: conn.getName(who),
         bg: 'https://i.ibb.co/1dJT0FG/240-F-292007743-h413-LUf-Bpsy-Xi8uvu-BTo-QW0bw9b3x05-U.jpg',
