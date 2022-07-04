@@ -19,7 +19,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     let usersLevel = sortedLevel.map(enumGetKey)
     let { min, xp, max } = levelling.xpRange(user.level, global.multiplier)
     if (!levelling.canLevelUp(user.level, user.exp, global.multiplier)) {
-      let rank = (await fetch(API('males', '/rankcard', {
+      let rank = (await fetch(API('males', '/rank', {
         profile: _pp,
         name: conn.getName(who),
         bg: 'https://i.ibb.co/1dJT0FG/240-F-292007743-h413-LUf-Bpsy-Xi8uvu-BTo-QW0bw9b3x05-U.jpg',
