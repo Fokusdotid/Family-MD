@@ -1,6 +1,5 @@
 ﻿let levelling = require('../lib/levelling')
 let fetch = require('node-fetch')
-
 let handler = async (m, { conn, usedPrefix }) => {
   //let _pp = './src/avatar_contact.png'
   let _pp = 'https://telegra.ph/file/4acb59eadbcad0093defd.png'
@@ -30,7 +29,7 @@ let handler = async (m, { conn, usedPrefix }) => {
       }),
       )).buffer()
       .then(async tes => {
-      	await conn.sendTemplateButtonFakeImg(m.chat, tes, `Level *${user.level} (${user.exp - min}/${xp})*\nKurang *${max - user.exp}* lagi!`.trim(), wm, 'Auto Level Up', `${prefix}on autolevelup`)
+      	conn.sendTemplateButtonFakeImg(m.chat, tes, `Level *${user.level} (${user.exp - min}/${xp})*\nKurang *${max - user.exp}* lagi!`.trim(), wm, 'Auto Level Up', `${prefix}on autolevelup`)
           //await conn.sendButtonImg(m.chat, tes, `Level *${user.level} (${user.exp - min}/${xp})*\nKurang *${max - user.exp}* lagi!`.trim(), wm, 'AUTO LEVEL UP', ',on autolevelup', m)
           //await conn.sendTemplateButtonLoc(m.chat, `Level *${user.level} (${user.exp - min}/${xp})*\nKurang *${max - user.exp}* lagi!`.trim(), wm, tes, 'Auto Level Up', `${prefix}on autolevelup`)
         })
@@ -38,12 +37,12 @@ let handler = async (m, { conn, usedPrefix }) => {
     let before = user.level * 1
     while (levelling.canLevelUp(user.level, user.exp, global.multiplier)) user.level++
     if (before !== user.level) {
-      let rank = (await fetch(API('apiku', '/levelup', {
+      let rank = (await fetch(API('males', '/levelup', {
         profile: _pp
       }),
       )).buffer()
       .then(async data => {
-      	await conn.sendTemplateButtonFakeImg(m.chat, data, `_*Level Up!*_\n_${before}_ -> _${user.level}_`.trim(), wm, 'Auto Level Up', `${prefix}on autolevelup`)
+      	conn.sendTemplateButtonFakeImg(m.chat, data, `_*Level Up!*_\n_${before}_ -> _${user.level}_`.trim(), wm, 'Auto Level Up', `${prefix}on autolevelup`)
           //await conn.sendTemplateButtonLoc(m.chat, `_*Level Up!*_\n_${before}_ -> _${user.level}_`.trim(), wm, data, 'Auto Level Up', `${prefix}on autolevelup`, m)
         })
     }
