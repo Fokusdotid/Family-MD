@@ -1,13 +1,12 @@
-﻿let levelling = require('../lib/levelling')
 let fetch = require('node-fetch')
+let levelling = require('../lib/levelling')
+
 let handler = async (m, { conn, usedPrefix }) => {
-  //let _pp = './src/avatar_contact.png'
-  let _pp = 'https://telegra.ph/file/4acb59eadbcad0093defd.png'
   let who = m.sender
-  let prefix = usedPrefix
-  let _discriminator = who.substring(9, 13)
+  let name = conn.getName(m.sender)
+  let discriminator = who.substring(9, 13)
   try {
-    _pp = await conn.profilePictureUrl(who)
+    pp = await conn.getProfilePicture(who)
   } catch (e) {
   } finally {
     let user = global.db.data.users[m.sender]
@@ -18,33 +17,35 @@ let handler = async (m, { conn, usedPrefix }) => {
     let usersLevel = sortedLevel.map(enumGetKey)
     let { min, xp, max } = levelling.xpRange(user.level, global.multiplier)
     if (!levelling.canLevelUp(user.level, user.exp, global.multiplier)) {
-      let rank = (await fetch(API('males', '/rank', {
-        profile: _pp,
-        name: conn.getName(who),
-        bg: 'https://i.ibb.co/1dJT0FG/240-F-292007743-h413-LUf-Bpsy-Xi8uvu-BTo-QW0bw9b3x05-U.jpg',
-        needxp: xp,
-        curxp: user.exp - min,
-        level: user.level,
-        logorank: 'https://i.ibb.co/Wn9cvnv/FABLED.png'
-      }),
-      )).buffer()
-      .then(async tes => {
-      	conn.sendTemplateButtonFakeImg(m.chat, tes, `Level *${user.level} (${user.exp - min}/${xp})*\nKurang *${max - user.exp}* lagi!`.trim(), wm, 'Auto Level Up', `${prefix}on autolevelup`)
-          //await conn.sendButtonImg(m.chat, tes, `Level *${user.level} (${user.exp - min}/${xp})*\nKurang *${max - user.exp}* lagi!`.trim(), wm, 'AUTO LEVEL UP', ',on autolevelup', m)
-          //await conn.sendTemplateButtonLoc(m.chat, `Level *${user.level} (${user.exp - min}/${xp})*\nKurang *${max - user.exp}* lagi!`.trim(), wm, tes, 'Auto Level Up', `${prefix}on autolevelup`)
-        })
+      let rank = 'https://flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=birdy-logo&doScale=true&scaleWidth=800&scaleHeight=500&text=DIKIT%20LAGI%20NAIK'
+        {
+          await conn.sendButtonImg(m.chat, await (await fetch(rank)).buffer(), `Level ${name} ${user.level} (${user.exp - min}/${xp})\nKurang ${max - user.exp} EXP lagi!`.trim(), wm, 'Enable autolevelup', `${usedPrefix}on autolevelup`, m)
+        }
     }
     let before = user.level * 1
     while (levelling.canLevelUp(user.level, user.exp, global.multiplier)) user.level++
     if (before !== user.level) {
-      let rank = (await fetch(API('males', '/levelup', {
-        profile: _pp
-      }),
-      )).buffer()
-      .then(async data => {
-      	conn.sendTemplateButtonFakeImg(m.chat, data, `_*Level Up!*_\n_${before}_ -> _${user.level}_`.trim(), wm, 'Auto Level Up', `${prefix}on autolevelup`)
-          //await conn.sendTemplateButtonLoc(m.chat, `_*Level Up!*_\n_${before}_ -> _${user.level}_`.trim(), wm, data, 'Auto Level Up', `${prefix}on autolevelup`, m)
-        })
+      let rank = 'https://flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=birdy-logo&doScale=true&scaleWidth=800&scaleHeight=500&text=LEVEL%20UP!'
+        {
+          await conn.sendButtonImg(m.chat, await (await fetch(rank)).buffer(), `${name} Level Up!\n_${before}_ -> ${user.level}`.trim(), wm, 'AUTO LEVEL UP', `${usedPrefix}on autolevelup`)
+          if(user.level > 150) {
+            let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+            let pp = await conn.profilePictureUrl(who, 'image')
+            let mentionedJid = [who]
+            conn.sendFile(m.chat, pp, 'pp.jpg', `Selamat @${who.split('@')[0]} Telah Mencapai Mythical Glory\nKehebatanmu akan tersebar ke seluruh penjuru grup!`, m, false, { contextInfo: {
+              mentionedJid: mentionedJid
+            }})
+            let getGroups = await conn.groupFetchAllParticipating()
+            let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
+            let listgc = groups.map(v => v.id)
+            for (let id of listgc) {
+              await conn.delay(1500)
+              await conn.sendFile(id, pp, 'pp.jpg', `Selamat @${who.split('@')[0]} Telah Mencapai Mythical Glory`, null, false, { contextInfo: {
+                mentionedJid: mentionedJid
+              }})
+            }
+          }
+        }
     }
   }
 }
