@@ -5,7 +5,7 @@ let moment = require('moment-timezone')
 moment.tz.setDefault('Asia/Jakarta'); // Change this to your local timezone
 moment.locale('id'); // Change this to your locale
 let handler = async (m, { conn, usedPrefix }) => {
-  global.pp = 'https://i.ibb.co/gS0XrNc/avatar-contact.png'
+  let pp = 'https://i.ibb.co/gS0XrNc/avatar-contact.png'
   let prefix = usedPrefix
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
   try {
@@ -13,7 +13,7 @@ let handler = async (m, { conn, usedPrefix }) => {
   } catch (e) {
 
   } finally {
-    let { name, premium, premiumTime, atm, limit, warning, pasangan, money, exp, lastclaim, tiketcoin, registered, regTime, age, level, role } = global.db.data.users[who]
+    let { name, premium, premiumTime, atm, limit, warning, pasangan, money, exp, lastclaim, registered, regTime, age, level, role } = global.db.data.users[who] 
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     let username = conn.getName(who)
     let jodoh = `Berhubungan dengan @${pasangan.split('@')[0]}`
@@ -30,7 +30,6 @@ let handler = async (m, { conn, usedPrefix }) => {
 │•> Limit: *${limit}*
 │•> Registered: ${registered ? 'Yes (' +  moment(new Date(regTime)).format('dddd, Do MMMM YYYY, hh:mm')+ ')': 'No'}
 │•> Atm: *${atm}*
-│•> Tiketcoin: *${tiketcoin}*
 │•> Money: *${money}*
 │•> Exp  : *${exp}*
 │•> Warning : *${warning}*
