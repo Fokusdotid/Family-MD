@@ -5,6 +5,7 @@ let handler = async (m, { conn, usedPrefix }) => {
   let who = m.sender
   let name = conn.getName(m.sender)
   let discriminator = who.substring(9, 13)
+  let pp = 'https://telegra.ph/file/4acb59eadbcad0093defd.png'
   try {
     pp = await conn.getProfilePicture(who)
   } catch (e) {
