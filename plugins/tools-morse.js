@@ -1,6 +1,4 @@
-let handler = async(m, { usedPrefix, command, text, isAdmin }) => {
-  if (!m.isGroup) return
-  if (global.db.data.chats[m.chat].onlyadmin === true && !isAdmin) return
+let handler = async(m, { usedPrefix, command, text }) => {
 
   let enc = {
     "a": "•-",
@@ -124,9 +122,7 @@ let handler = async(m, { usedPrefix, command, text, isAdmin }) => {
     }
 
     m.reply(Output_String)
-  } else {
-    if (global.db.data.chats[m.chat].englishlang === true) m.reply(`*_insert text!_*\n_For example:_\n\n*${usedPrefix}${command} encode Hello World*\n*${usedPrefix}${command} decode •••• • •-•• •-•• --- / •-- --- •-• •-•• -••*`)
-    else m.reply(`*متن را به درستی وارد کنید!*\nبرای مثال :\n\n*${usedPrefix}${command} encode Hello World*\n*${usedPrefix}${command} decode •••• • •-•• •-•• --- / •-- --- •-• •-•• -••*`)
+  } else m.reply(`*_insert text!_*\n_For example:_\n\n*${usedPrefix}${command} encode Hello World*\n*${usedPrefix}${command} decode •••• • •-•• •-•• --- / •-- --- •-• •-•• -••*`)
   }
 }
 handler.help = ["morse encode [text]", "morse decode [morse]"]
