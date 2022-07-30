@@ -18,6 +18,9 @@ module.exports = {
         if (chatUpdate.messages.length > 1) console.log(chatUpdate.messages)
         let m = chatUpdate.messages[chatUpdate.messages.length - 1]
         if (!m) return
+        const Tnow = (new Date()/1000).toFixed(0)
+        const seli = Tnow - m.messageTimestamp
+        if (seli > global.Intervalmsg) return console.log(new ReferenceError(`Pesan ${Intervalmsg} detik yang lalu diabaikan agar tidak nyepam`))
         
         global.namabot = await this.user.name
         global.wm = namabot + ' ву ƒσкυѕ ι∂'
