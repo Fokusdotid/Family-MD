@@ -40,6 +40,7 @@ global.APIKeys = { // APIKey Here
 
 global.wait = '_*𝐬𝐞𝐝𝐚𝐧𝐠 𝐝𝐢 𝐩𝐫𝐨𝐬𝐞𝐬 ...*_'
 global.eror = '_*мααƒ ѕєяνєя тι∂αк ѕтαвιℓ..*_'
+global.Intervalmsg = 1800
 
 //========Url Template Buttons=========//
 global.dtu = 'ɪɴꜱᴛᴀɢʀᴀᴍ'
