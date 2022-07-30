@@ -20,7 +20,7 @@ module.exports = {
         if (!m) return
         const Tnow = (new Date()/1000).toFixed(0)
         const seli = Tnow - m.messageTimestamp
-        if (seli > global.Intervalmsg) return console.log(new ReferenceError('Pesan 30 menit yang lalu diabaikan agar tidak nyepam'))
+        if (seli > global.Intervalmsg) return console.log(new ReferenceError(`Pesan ${Intervalmsg} detik yang lalu diabaikan agar tidak nyepam`))
         
         global.namabot = await this.user.name
         global.wm = namabot + ' ву ƒσкυѕ ι∂'
