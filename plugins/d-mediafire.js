@@ -3,7 +3,7 @@ let axios = require('axios');
 let handler = async (m, { conn, text, usedPrefix, command }) => {
 	if (!text) throw `uhm.. urlnya mana?\n\npenggunaan:\n${usedPrefix + command} url\ncontoh:\n${usedPrefix + command} http://www.mediafire.com/file/js0gr2nozcmk9yg/example.txt/file`
 	
-	let res = await (await axios.get(API('males', '/mediafire', { url: text }))).data;
+	let res = await (await axios.get(API('males', '/downloader/mediafire', { url: text }))).data;
 	if (res.status != 200) throw res.message;
 	let txt = `
 *Nama File:* ${res.result.filename}
