@@ -100,7 +100,7 @@ let handler = async(m, { usedPrefix, command, text }) => {
   }
 
   let selected = text.toLowerCase().split(" ")[0] + " "
-  if(selected == "encode ") {
+  if (selected == "encode ") {
     let str = text.replace(selected, "").toLowerCase()
     let Output_Morse = ""
     for(let i of str) {
@@ -109,9 +109,8 @@ let handler = async(m, { usedPrefix, command, text }) => {
         if(j == i) Output_Morse += enc[i] + " "
       }
     }
-
     m.reply(Output_Morse)
-  } else if(selected == "decode ") {
+  } else if (selected == "decode ") {
     let str = text.replace(selected, "").replace(/[.]/g, "•")
     let Output_String = ""
     for(let i of str.split(" ")) {
@@ -120,10 +119,8 @@ let handler = async(m, { usedPrefix, command, text }) => {
         if(j == i) Output_String += dec[i]
       }
     }
-
     m.reply(Output_String)
   } else m.reply(`*_insert text!_*\n_For example:_\n\n*${usedPrefix}${command} encode Hello World*\n*${usedPrefix}${command} decode •••• • •-•• •-•• --- / •-- --- •-• •-•• -••*`)
-  }
 }
 handler.help = ["morse encode [text]", "morse decode [morse]"]
 handler.tags = ["tools"]
